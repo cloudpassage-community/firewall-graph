@@ -31,7 +31,10 @@ setup(
     keywords="cloudpassage halo api firewall graph",
     url="http://github.com/halotools/firewall-graph",
     packages=["firewallgraph"],
-    install_requires=["cloudpassage >= 1.0"],
+    install_requires=["cloudpassage >= 1.0",
+                      "networkx >= 1.11",
+                      "pydot >= 1.2.3",
+                      "pygraphviz >= 1.3.1"],
     long_description=get_long_description(["README.rst", "CHANGELOG.rst"]),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",

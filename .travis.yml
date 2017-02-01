@@ -1,0 +1,7 @@
+sudo: required
+language: python
+services:
+- docker
+script: docker build -t firewall-graph .
+after_script: docker run -it --rm firewall-graph /bin/sh -c "git checkout master; codeclimate-test-reporter
+  --token $CODECLIMATE_REPO_TOKEN --debug"

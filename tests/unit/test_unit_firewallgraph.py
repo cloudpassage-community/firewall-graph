@@ -88,16 +88,16 @@ policy_json_2 = {"firewall_policy":
                                                           "url": "https://po",
                                                           "name": "NewOffice",
                                                           "group_id": "r1234",
-                                                          "group_name": "Cloud Passage",
+                                                          "group_name": "Cloud Passage",  # NOQA
                                                           "description": "",
-                                                          "ip_address": "4.4.4.4",
+                                                          "ip_address": "4.4.4.4",  # NOQA
                                                           "system": False,
                                                           "shared": True,
-                                                          "type": "FirewallZone"}},
+                                                          "type": "FirewallZone"}},  # NOQA
                                      {"id": "r1234",
-                                      "url": "https://portal.cloudpassage.com/",
+                                      "url": "https://portal.cloudpassage.com/",  # NOQA
                                       "chain": "INPUT", "action": "ACCEPT",
-                                      "active": True, "connection_states": None,
+                                      "active": True, "connection_states": None,  # NOQA
                                       "log": False, "log_prefix": None,
                                       "comment": "",
                                       "firewall_service": {"id": "r1234",
@@ -113,12 +113,12 @@ policy_json_2 = {"firewall_policy":
                                                           "url": "https://por",
                                                           "name": "Office",
                                                           "group_id": "4d61",
-                                                          "group_name": "Cloud Passage",
-                                                          "description": "Office on Townsend",
-                                                          "ip_address": "4.4.4.4/32",
+                                                          "group_name": "Cloud Passage",  # NOQA
+                                                          "description": "Office on Townsend",  # NOQA
+                                                          "ip_address": "4.4.4.4/32",  # NOQA
                                                           "system": False,
                                                           "shared": True,
-                                                          "type": "FirewallZone"}},
+                                                          "type": "FirewallZone"}},  # NOQA
                                      {"id": "8e33",
                                       "url": "https://portal",
                                       "chain": "INPUT",
@@ -129,7 +129,7 @@ policy_json_2 = {"firewall_policy":
                                       "log_prefix": None,
                                       "comment": "",
                                       "firewall_source": {"type": "UserGroup",
-                                                          "name": "All GhostPorts users"}},
+                                                          "name": "All GhostPorts users"}},  # NOQA
                                      {"id": "6dd7",
                                       "url": "https://portal",
                                       "chain": "INPUT",
@@ -234,7 +234,6 @@ class TestUnitFirewallGraph:
     def test_unit_parse_fw_policies(self):
         grapher = firewallgraph.FirewallGraph
         policy = policy_json["firewall_policy"]
-        name = "Test Server"
         result = grapher.parse_fw_policies([policy])
         assert isinstance(result, list)
         assert isinstance(result[0], tuple)

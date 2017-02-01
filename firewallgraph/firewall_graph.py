@@ -56,18 +56,6 @@ class FirewallGraph(object):
         return base64.b64encode(retval)
 
     @classmethod
-    def node_generator(cls, rules):
-        # nodes = [(,1,2,3)]
-        nodes_src = []
-        nodes_port = []
-        nodes_dst = []
-        for rule in rules:
-            nodes_src.append((rule[0]))
-            nodes_port.append((rule[1]))
-            nodes_dst.append((rule[2]))
-        return nodes_src, nodes_port, nodes_dst
-
-    @classmethod
     def edge_generator(cls, rules):
         # edges = [(1,2),(1,3)]
         edges = []
@@ -75,12 +63,6 @@ class FirewallGraph(object):
             edges.append((rule[0], rule[1]))
             edges.append((rule[1], rule[2]))
         return edges
-
-    @classmethod
-    def label_generator(cls, nodes):
-        labels = []
-        labels.append()
-        return labels
 
     @classmethod
     def parse_fw_policies(cls, policies):
@@ -140,13 +122,3 @@ class FirewallGraph(object):
             else:
                 dst_port = 'Any'
         return(dst_protocol, dst_port)
-
-    @classmethod
-    def remove_duplicates(cls, values):
-        output = []
-        seen = set()
-        for value in values:
-            if value not in seen:
-                output.append(value)
-                seen.add(value)
-        return output
