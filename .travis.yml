@@ -3,5 +3,8 @@ language: python
 services:
 - docker
 script: docker build -t firewall-graph .
-after_script: docker run -it --rm firewall-graph /bin/sh -c "git checkout master; codeclimate-test-reporter
-  --token $CODECLIMATE_REPO_TOKEN --debug"
+after_script: docker run -it --rm firewall-graph /bin/sh -c "git checkout master;
+  codeclimate-test-reporter --token $CODECLIMATE_REPO_TOKEN --debug"
+env:
+  global:
+    secure: sNPsd/zynaGkfFGtsgQlRTCicg8BXFaQSj3fZMSsWWVUUpsTjyV8HTvBMTxMw91L3uw9CDVUqWTf8fXtEY8gF40YtxIcMrjhlw1+njUpiZHpX/u+u8dv9zGQbJSJObwoIszcpf39nZ2W8xCIZ0i7K9Z3Jax4BYy+LwUTfhHY1t9NB0ZFi1x8LGmVDcDWdIUMJcvwMu5+A+kAr7hZ7AibSrqunen0eSr4XixpHKY8/XX4fsJ0bus8/KN3KLKsWV/vzZTnLQLreBihBDFy/b6ZGAOo4qMtbF1iisjtqGlfO5tN442ZyB89p/8DbMmnsdnC5SOjJIfDbZKPq/TvLGSIM6AWHkBjLvGtXrXkhOuN//jv6zhaCP4BnbUylcdz66jt91gqkmO3t9vdpJI0eYHcKsou4kyMSIclBDMzbu3dT+HrDIKKTfOr/oSfNpzHbYMUl1Uy624uJd2ssRVaNjcSdpspxGzDaP8EV67sHAcjRfdBYvExk42hem/A8jLmcC7tFW3+jauYVE8/f4ZOLDSF2/eL5QRSTqI4HKmo7qBz17+PqhIYPGUmY8sx6et5+WY/oZ7Tq0/6a0kH19z8S/YoznIMLsdPVSELX8RX9/2n4IZFqk0943UtSXyrQngf/vklWHNFDjQ6HC5KMCrQg/hfEdTTMA2OP4eY8fghDbB+zbY=

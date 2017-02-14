@@ -29,7 +29,7 @@ setup(
     description="Turn CloudPassage Halo firewall policies into directed graphs",
     license="BSD",
     keywords="cloudpassage halo api firewall graph",
-    url="http://github.com/halotools/firewall-graph",
+    url="http://github.com/cloudpassage-community/firewall-graph",
     packages=["firewallgraph"],
     install_requires=["cloudpassage >= 1.0",
                       "networkx >= 1.11",
