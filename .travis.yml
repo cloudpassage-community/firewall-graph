@@ -3,7 +3,7 @@ language: python
 services:
 - docker
 script:
-- git checkout ${GIT_BRANCH}
+- git checkout -qf ${GIT_BRANCH}
 - export FULL_IMAGE_NAME=docker.io/halotools/firewall-graph
 - export IMAGE_TAG_DATE=${IMAGE_TAG}_`date "+%Y-%m-%d"`
 - docker build -t firewall-graph .
