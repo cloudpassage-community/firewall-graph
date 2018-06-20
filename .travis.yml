@@ -3,12 +3,10 @@ language: python
 services:
 - docker
 script:
-- git checkout -qf ${GIT_BRANCH}
 - export FULL_IMAGE_NAME=docker.io/halotools/firewall-graph
-- export IMAGE_TAG_DATE=${IMAGE_TAG}_`date "+%Y-%m-%d"`
+- export IMAGE_TAG=${TRAVIS_BRANCH/\//_}
 - docker build -t firewall-graph .
-- docker tag firewall-graph:latest ${FULL_IMAGE_NAME}:${IMAGE_TAG}
-- docker tag firewall-graph:latest ${FULL_IMAGE_NAME}:${IMAGE_TAG_DATE}
+- docker tag firewall-graph:latest ${FULL_IMAGE_NAME}:${IMAGE_TAG/master/latest}
 after_script:
 - docker run -it --rm firewall-graph /bin/sh -c "git checkout master; codeclimate-test-reporter
   --token $CODECLIMATE_REPO_TOKEN --debug"
@@ -16,9 +14,6 @@ after_script:
 - docker login -u ${DOCKERHUB_USER} -p ${DOCKERHUB_PASS}
 - docker push ${FULL_IMAGE_NAME}:${IMAGE_TAG}
 env:
-  matrix:
-  - IMAGE_TAG=latest GIT_BRANCH=master
-  - IMAGE_TAG=0.1.1 GIT_BRANCH=v0.1.1
   global:
   - secure: sNPsd/zynaGkfFGtsgQlRTCicg8BXFaQSj3fZMSsWWVUUpsTjyV8HTvBMTxMw91L3uw9CDVUqWTf8fXtEY8gF40YtxIcMrjhlw1+njUpiZHpX/u+u8dv9zGQbJSJObwoIszcpf39nZ2W8xCIZ0i7K9Z3Jax4BYy+LwUTfhHY1t9NB0ZFi1x8LGmVDcDWdIUMJcvwMu5+A+kAr7hZ7AibSrqunen0eSr4XixpHKY8/XX4fsJ0bus8/KN3KLKsWV/vzZTnLQLreBihBDFy/b6ZGAOo4qMtbF1iisjtqGlfO5tN442ZyB89p/8DbMmnsdnC5SOjJIfDbZKPq/TvLGSIM6AWHkBjLvGtXrXkhOuN//jv6zhaCP4BnbUylcdz66jt91gqkmO3t9vdpJI0eYHcKsou4kyMSIclBDMzbu3dT+HrDIKKTfOr/oSfNpzHbYMUl1Uy624uJd2ssRVaNjcSdpspxGzDaP8EV67sHAcjRfdBYvExk42hem/A8jLmcC7tFW3+jauYVE8/f4ZOLDSF2/eL5QRSTqI4HKmo7qBz17+PqhIYPGUmY8sx6et5+WY/oZ7Tq0/6a0kH19z8S/YoznIMLsdPVSELX8RX9/2n4IZFqk0943UtSXyrQngf/vklWHNFDjQ6HC5KMCrQg/hfEdTTMA2OP4eY8fghDbB+zbY=
   - secure: hsZe+bGbNzPFgzqYkEi4UcBeRYWfiBGUz+5ktUwtL6DYXf9qtJZbu9aTvu0DZDq973CGXuWW2q0j2IiANBFfa8NdfSsVKyZNdMiGHiAkCi27frKWgGQhHZi9e5A/hJVoHdr9xSAhQsO8D9jmE2HfTe44gAq0d6amSmkWD7sQFUFNfYsokJcWmd08/ppvpck4AoAqSTtJtqe4PygMP8daPgI9eeNMHF+fWo4yH5W+h0ZV6/CnMTgDZJWneUx1DuMKwqeGkaOampg70v2teeDdDATxtFUwtdmdMLFSZi1lT5wUej+5RaiQLyv/eaBut9+4fKj3B5qq9n5S2XTCPPRfiIT1Tg5OEsYM2JBj7EPyBZnJn1ld3ZYw03McjgHAlhky3HPHiqBRmYRgdlRlglwzad313GyxcqPy+fjrNzSiAxY43QC4f8mpHX/8Dg3VQ1TdFRRnxov/gWYwf7zKi9zX/bHO6FrzdMSVmSSuvaUT469KpNmTqvNvzuNOhu70IafgGXfnLDv4sYCY1/9tKYf7SPa8WHXaLxHH/S5bH9HRcipd4Tdte3wsNvOS3PCg6Akyp5UWJeBRUqU440IbFVnHpTsRCqxRzvzHtR8UHN27zFE/82dj6eUE588+jawtS7lvOx/pBYNKBsleqjYaG48v7lIeI+r/b3TAcSqa+19oMQw=
