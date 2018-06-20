@@ -1,8 +1,21 @@
 Changelog
 =========
 
-v0.1
+v0.2
 ----
+
+Changes
+~~~~~~~
+
+- Support HALO_API_HOSTNAME environment variable. [Ash Wilson]
+
+  The HALO_API_HOSTNAME environment variable defaults to
+  api.cloudpassage.com if otherwise unset.
+
+  Closes #1
+
+v0.1 (2017-02-01)
+-----------------
 
 New
 ~~~
