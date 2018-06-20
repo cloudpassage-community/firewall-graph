@@ -6,8 +6,10 @@ from firewallgraph import FirewallGraph
 def main():
     halo_key = os.getenv('HALO_API_KEY')
     halo_secret = os.getenv('HALO_API_SECRET_KEY')
+    halo_api_host = os.getenv('HALO_API_HOSTNAME')
     target = os.getenv('TARGET')
-    session = cloudpassage.HaloSession(halo_key, halo_secret)
+    session = cloudpassage.HaloSession(halo_key, halo_secret,
+                                       api_host=halo_api_host)
     try:
         result = generate_group_firewall_report(session, target)
         print(result)
